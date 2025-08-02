@@ -10,14 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_07_30_074035) do
+ActiveRecord::Schema[7.1].define(version: 2025_08_02_065413) do
+  create_table "tweets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "tweet_content"
+    t.integer "good"
+    t.integer "retweet"
+    t.boolean "is_deleted", default: false
+    t.datetime "discarded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tweets_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "account_name"
+    t.string "account_name", null: false
     t.text "description"
-    t.string "email"
-    t.string "password"
+    t.string "email", null: false
+    t.string "password", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "tweets", "users"
 end
