@@ -1,0 +1,9 @@
+- @tweets.each do |tweet|
+  - unless tweet.discarded_at
+    = tweet.account_name
+    = tweet.tweet_content
+    = tweet.created_at
+    button いいね
+    = tweet.good
+    button RT
+    = button_to "delete", tweet, method: :delete

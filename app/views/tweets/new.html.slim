@@ -1,0 +1,6 @@
+.row
+  = form_for @tweet do |f|
+    = @user.account_name
+    = f.label :tweet_content
+    = f.text_field :tweet_content
+    = f.submit "ツイートする", class: "btn btn-primary"
