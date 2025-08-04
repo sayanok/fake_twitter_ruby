@@ -1,11 +1,5 @@
-<%#
-さいどばーつくりたい
-ツイートの一覧もどこかに切り出すべき？
-application.html.erbと役割がよくわかってない気がする
-%>
-<%= render 'layouts/sidebar' %>
-
 <% @tweets.each do |tweet| %>
+<% if !tweet.discarded_at %>
 <%= tweet.account_name %>
 <%= tweet.tweet_content %>
 <%= tweet.created_at %>
@@ -13,9 +7,6 @@ application.html.erbと役割がよくわかってない気がする
 <%= tweet.good %>
 <button>RT</button>
 <%= tweet.retweet %>
-<%= link_to "ツイート削除", tweet, method: :delete, data: {confirm: "You sure?"} %>
-<%#
-application.html.erbをちゃんと読み込んでいない？ので動かないらしい
-<%
-%>
+<%= button_to "delete", tweet, method: :delete%>
+<% end %>
 <% end %>
