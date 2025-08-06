@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title Myapp
+    meta name="viewport" content="width=device-width,initial-scale=1"
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = turbo_include_tags
+    = javascript_importmap_tags
+    script src="https://kit.fontawesome.com/ae4e4aec2e.js" crossorigin="anonymous"
+
+  body
+    .layout
+      = render 'layouts/sidebar'
+      main.content
+        = yield

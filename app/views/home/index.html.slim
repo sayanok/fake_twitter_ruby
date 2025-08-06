@@ -3,7 +3,11 @@
     = tweet.account_name
     = tweet.tweet_content
     = tweet.created_at
-    button いいね
+    button
+      i.fas.fa-thumbs-up
     = tweet.good
-    button RT
-    = button_to "delete", tweet, method: :delete
+    button
+      i.fas.fa-repeat
+    button
+      = link_to tweet_path(tweet), method: :delete do
+      i.fas.fa-trash
