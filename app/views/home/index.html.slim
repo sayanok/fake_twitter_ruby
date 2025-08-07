@@ -1,13 +1,16 @@
-- @tweets.each do |tweet|
-  - unless tweet.discarded_at
-    = tweet.account_name
-    = tweet.tweet_content
-    = tweet.created_at
-    button
-      i.fas.fa-thumbs-up
-    = tweet.good
-    button
-      i.fas.fa-repeat
-    button
-      = link_to tweet_path(tweet), method: :delete do
-      i.fas.fa-trash
+ul
+  - @tweets.each do |tweet|
+    li
+      - unless tweet.discarded_at
+        = link_to tweet_path(tweet)
+          = tweet.account_name
+          = tweet.tweet_content
+          = tweet.created_at
+          button
+            i.fas.fa-thumbs-up
+          = tweet.good
+          button
+            i.fas.fa-repeat
+          button
+            = link_to tweet_path(tweet), method: :delete do
+            i.fas.fa-trash

@@ -11,7 +11,7 @@ class TweetsController < ApplicationController
 
   def create
     user_id = User.find(1).id
-    @tweet = Tweet.new(item_params)
+    @tweet = Tweet.new(tweet_params)
     # 現在ログインしているユーザーの情報を取得できるようにする
 
     if @tweet.save
@@ -28,13 +28,12 @@ class TweetsController < ApplicationController
     else
       flash[:alert] = "ツイートの削除に失敗しました。時間をおいて再度削除してください。"
     end
-
   end
 
   private
 
-    def item_params
-      params.require(:tweet).permit(:tweet_content).merge(user_id: 1)
+    def tweet_params
+      params.require(:tweet).permit(:tweet_content, :good).merge(user_id: 1)
       # 現在ログインしているユーザーのidに置き換える
     end
 end
